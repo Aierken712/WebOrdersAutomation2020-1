@@ -10,6 +10,7 @@ public class Driver {
 
     //same for everyone
     private static ThreadLocal<WebDriver> driverPool = new ThreadLocal<>();
+
     //so no one can create object of Driver class
     //everyone should call static getter method instead
 
@@ -17,8 +18,15 @@ public class Driver {
 
     }
 
+
+    /**synchronized makes method thread safe. It ensures that only 1 thread can use it at the time.
+     *
+     * Thread safety reduces performance but it makes everything safe.
+     *
+     * @return
+     */
     public synchronized static WebDriver getDriver() {
-        //if webDriver object doesn't exist
+        //if webdriver object doesn't exist
         //create it
         if (driverPool.get() == null) {
             //specify browser type in configuration.properties file
